@@ -1,0 +1,81 @@
+.ref {
+    text-align: center;
+    font-size: 10px;
+    color: #796e71;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 0px;
+}
+
+.aNav {
+    color: rgb(162, 47, 219);
+    font-size: medium;
+    text-decoration: none;
+}
+
+.register {
+    font-weight: bold;
+    color: rgb(19, 80, 116);
+    font-size: 1.2em;
+    text-decoration: none;
+    float: right;
+}
+
+.terminos {
+    background-color: black;
+    padding: 1px;
+}
+
+.tituloInd {
+    text-align: center;
+    color: rgba(14, 238, 51, 0.671);
+    background-color: grey;
+    margin: 0px;
+    text-decoration: none;
+}
+
+.tituloInd:hover {
+    background-color: #661414;
+}
+
+.navegador {
+    float: right;
+    display: contents;
+}
+
+.ulbotonera .libotonera {
+    float: right;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.ulbotonera {
+    display: flow-root;
+    list-style-type: none;
+    background-color: rgb(252, 126, 126);
+}
+
+.explicacion .ulInd {
+    list-style-type: none;
+    padding-right: 0%;
+    text-align: center;
+    color: rgb(11, 238, 113);
+    background-color: cornflowerblue;
+    margin: 0px;
+}
+
+.pTitle {
+    color: rgb(18, 105, 25);
+}
+
+#title1,
+#title2,
+#title3,
+#title4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: skyblue;
+}
