@@ -1,31 +1,34 @@
 let butTest = document.getElementById("sumbit").addEventListener("click", getTest);
-let spTitle = document.getElementById("sptitle1");
-let spTitle2 = document.getElementById("sptitle2");
+// let allPoke = document.getElementById("allPoke");
+let onePoke = document.getElementById("onePoke");
 
 function getTest() {
-    let inputId = document.getElementById("idPost").value;
-    const getDataAsync = async(idPost) => {
+    let idPoke = document.getElementById("idPost").value;
+    const getDataAsync = async(idpoke) => {
         try {
-            if (inputId >= 1 & inputId < 899) {
-                const resPost = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPost}`);
-                const post = await resPost.json();
-                console.log(post);
-                // const resUser = await fetch(`https://pokeapi.co/api/v2/pokemon/${post.userId}`)
-                // const user = await resUser.json();
-                spTitle.innerHTML = post.name;
+            if (idPoke >= 1 & idPoke < 899) {
+                const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idpoke}`);
+                const poke = await resPoke.json();
+                console.log(poke);
+                // const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.allPokeId}`)
+                // const allPoke = await resAllPoke.json();
+                onePoke.innerHTML = poke.name;
             }
-            if (inputId < 1 || inputId == '') {
+            if (idPoke < 1 || idPoke == '') {
                 console.log("If 2")
-                idPost = 1;
-                const resPost = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPost}`);
-                const post = await resPost.json();
-                console.log("post" + " " + post)
-                spTitle2.innerHTML = post.name;
-                for (let i = 0; i < post.id; post.id++) {
-                    console.log("entro for")
-                    const resUser = await fetch(`https://pokeapi.co/api/v2/pokemon/${post.id}`)
-                    const user = await resUser.json();
-                    spTitle2.innerHTML = user.name;
+                const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idpoke}`);
+                const poke = await resPoke.json();
+                for (let i = 0; i < poke.id; i++) {
+                    console.log("for")
+                    const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.id}`)
+                    const allPoke = await resAllPoke.json();
+
+                    function createP() {
+                        let divAll = document.getElementById("allPoke");
+                        let p = document.createElement("p");
+                        p.innerHTML = allPoke;
+                        divAll.appendChild(p)
+                    }
                 }
             }
         } catch (error) {
@@ -33,5 +36,5 @@ function getTest() {
         }
 
     }
-    getDataAsync(inputId);
+    getDataAsync(idPoke);
 }
