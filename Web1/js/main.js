@@ -5,7 +5,7 @@
 //let idPoke = document.getElementById("idPost").value;
 //let namePoke = document.getElementById("namePoke").value;
 let butPost = document.querySelector('#butTienda').addEventListener("click", post);
-let getPost = document.querySelector('#getTienda').addEventListener("click", getItems);
+let getPost = document.getElementById("getTienda").addEventListener("click", getItems);
 
 function getTest() {
     const getDataAsync = async(idPoke) => {
@@ -129,14 +129,12 @@ async function post() {
         console.log(title);
         div.innerHTML = "se guardo :)";
     } catch {
-        (error)
+        (error);
         div.innerHTML = "no se guardo :c";
     }
 }
-
-
 async function getItems() {
-    const div = document.querySelector(".getItem");
+    let div = document.querySelector(".getItems");
     let url = `https://jsonplaceholder.typicode.com/posts`;
     try {
         let r = await fetch(url);
@@ -144,10 +142,9 @@ async function getItems() {
         let html = "";
         for (const elem of json) {
             html += "<p>" + elem.thing.title + "</p>";
-            console.log(json)
-        };
+        }
         div.innerHTML = html;
     } catch {
-        ("error es" + error);
+        (error);
     }
 }
