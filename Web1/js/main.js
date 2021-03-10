@@ -5,6 +5,7 @@
 //let idPoke = document.getElementById("idPost").value;
 //let namePoke = document.getElementById("namePoke").value;
 let butPost = document.querySelector('#butTienda').addEventListener("click", post);
+let getPost = document.querySelector('#getTienda').addEventListener("click", getItems);
 
 function getTest() {
     const getDataAsync = async(idPoke) => {
@@ -104,7 +105,7 @@ function getPokeClass() {
 
 
 async function post() {
-    let div = document.querySelector(".seGuardo")
+    let div = document.querySelector(".seGuardo");
     div.innerHTML = "Guardando...*";
     let url = `https://jsonplaceholder.typicode.com/posts`;
     let title = {
@@ -122,7 +123,6 @@ async function post() {
                 'Content-Type': 'aplication-json'
             },
             'body': JSON.stringify(title),
-
         });
         let json = r.json();
         console.log(json);
@@ -131,5 +131,23 @@ async function post() {
     } catch {
         (error)
         div.innerHTML = "no se guardo :c";
+    }
+}
+
+
+async function getItems() {
+    const div = document.querySelector(".getItem");
+    let url = `https://jsonplaceholder.typicode.com/posts`;
+    try {
+        let r = await fetch(url);
+        let json = r.json();
+        let html = "";
+        for (const elem of json) {
+            html += "<p>" + elem.thing.title + "</p>";
+            console.log(json)
+        };
+        div.innerHTML = html;
+    } catch {
+        ("error es" + error);
     }
 }
