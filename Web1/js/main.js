@@ -4,7 +4,7 @@
 //let onePoke = document.getElementById("onePoke").value;
 //let idPoke = document.getElementById("idPost").value;
 //let namePoke = document.getElementById("namePoke").value;
-let butPost = document.querySelector('#butTienda').addEventListener("click", post());
+let butPost = document.querySelector('#butTienda').addEventListener("click", post);
 
 function getTest() {
     const getDataAsync = async(idPoke) => {
@@ -104,25 +104,32 @@ function getPokeClass() {
 
 
 async function post() {
+    let div = document.querySelector(".seGuardo")
+    div.innerHTML = "Guardando...*";
     let url = `https://jsonplaceholder.typicode.com/posts`;
     let title = {
         "thing": {
             "userId": 1,
             "id": 2,
-            "title": "mira como está la vanacia",
+            "title": "mira como está la vagancia",
             "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
         },
     };
-    let r = await fetch(url, {
-        'method': "POST",
-        'headers': {
-            'Content-Type': 'aplication-json'
-        },
-        'body': JSON.stringify(title),
+    try {
+        let r = await fetch(url, {
+            'method': "POST",
+            'headers': {
+                'Content-Type': 'aplication-json'
+            },
+            'body': JSON.stringify(title),
 
-    });
-    let html = r.json();
-    console.log(html);
-    console.log(title);
-
+        });
+        let json = r.json();
+        console.log(json);
+        console.log(title);
+        div.innerHTML = "se guardo :)";
+    } catch {
+        (error)
+        div.innerHTML = "no se guardo :c";
+    }
 }
