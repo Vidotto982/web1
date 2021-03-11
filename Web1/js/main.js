@@ -7,6 +7,7 @@
 let butPost = document.querySelector('#butTienda').addEventListener("click", post);
 let getPost = document.getElementById("getTienda").addEventListener("click", getItems);
 
+
 function getTest() {
     const getDataAsync = async(idPoke) => {
         try {
@@ -98,12 +99,9 @@ function getPokeClass() {
         } catch (error) {
             console.log(error);
         }
-
     }
     getDataAsync(idPoke)
 }
-
-
 async function post() {
     let div = document.querySelector(".seGuardo");
     div.innerHTML = "Guardando...*";
