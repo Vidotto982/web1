@@ -5,7 +5,7 @@
 //let idPoke = document.getElementById("idPost").value;
 //let namePoke = document.getElementById("namePoke").value;
 let butPost = document.querySelector('#butTienda').addEventListener("click", post);
-let getPost = document.querySelector('#getTienda').addEventListener("click", getItems);
+let getPost = document.getElementById('getTienda').addEventListener("click", getItems());
 let deletePost = document.querySelector("#deleteItem").addEventListener("click", deleteItem);
 
 // function getTest() {
@@ -105,15 +105,13 @@ let deletePost = document.querySelector("#deleteItem").addEventListener("click",
 async function post() {
     let div = document.querySelector(".seGuardo");
     div.innerHTML = "Guardando...*";
-    let url = `https://my-json-server.typicode.com/typicode/demo/posts`;
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
     let title = {
         "thing": {
             //"userId": 1,
-            "id": 4,
-            "title": "Post 4",
-
+            "nombre": "Riquelme",
             //"body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-        },
+        }
     };
     try {
         let r = await fetch(url, {
@@ -128,26 +126,28 @@ async function post() {
         console.log(title);
         div.innerHTML = "se guardo :)";
     } catch {
-        (error);
-        div.innerHTML = "no se guardo :c";
+        console.log(e);
+        for (index in e) {
+            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
+        }
     }
 }
 async function getItems() {
-    let div = document.querySelector(".getItems");
-    let url = `https://my-json-server.typicode.com/typicode/demo/posts`;
+    let div = document.getElementsByClassName("Items");
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
+    let r = await fetch(url);
+    let json = r.json();
     try {
-        let r = await fetch(url);
-        let json = r.json();
-        for (const elem of json) {
+        for (const elem of json.nombres) {
             //  html += "<p>" + elem.thing.title + "</p>"; mala practica
             let p = document.createElement("p"); //{
-            p.innerHTML = elem.thing.post; //          BUENA PRACTICA
+            p.innerHTML = elem.thing.nombre; //          BUENA PRACTICA
             div.appendChild(p); //}
-
         }
-    } catch {
-        (error)
-        console.log(error);
+
+    } catch (e) {
+        console.log(e);
+
     }
 }
 
@@ -155,7 +155,8 @@ async function getItems() {
 async function putItem() {
     let div = document.querySelector(".seGuardo");
     div.innerHTML = "Guardando...*";
-    let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
+    let url = `
+                https: //my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
     let title = {
         "thing": {
             "title": "mira como está la vagancia",
@@ -174,13 +175,14 @@ async function putItem() {
         console.log(title);
         div.innerHTML = "se guardo :)";
     } catch {
-        (error);
-        div.innerHTML = "no se guardo :c";
+        console.log(e);
+        for (index in e) {
+            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
+        }
     }
 }
-
 async function deleteItem() {
-    let div = document.querySelector(".seGuardo");
+    let div = document.querySelector(".deleteItems");
     div.innerHTML = "Borrrando...*";
     let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`;
     try {
@@ -192,7 +194,9 @@ async function deleteItem() {
         console.log(title);
         div.innerHTML = "se borro :)";
     } catch {
-        (error);
-        div.innerHTML = "no se borro :c";
+        console.log(e);
+        for (index in e) {
+            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
+        }
     }
 }
