@@ -133,22 +133,28 @@ async function post() {
 
 async function getItems() {
     let div = document.querySelector(".items");
-    let url = `https://web-unicen.herokuapp.com/api/groups/javier/claserest`;
+    div.innerHTML = "Cargando elementos..."
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
     let r = await fetch(url);
-    let json = r.json();
+    let json = await r.json();
     try {
-        for (const elem of json.claserest) {
-            let p = document.createElement("p");
-            p = elem.thing.cliente;
-            div.appendChild(p);
+        for (const elem of json.nombres) {
+            function createP() {
+                let p = document.createElement("p");
+                p = elem.thing.nombre;
+                div.appendChild(p);
+            }
+            createP();
         }
     } catch (e) {
         console.log(e);
+        div.innerHTML = "F"
+
     }
 }
 async function putItem() {
-    let div = document.querySelector(".seGuardo");
-    div.innerHTML = "Guardando...*";
+    let div = document.querySelector(".putItem");
+    div.innerHTML = "Actualizando...*";
     let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
     let title = {
         "thing": {
@@ -163,7 +169,7 @@ async function putItem() {
             },
             'body': JSON.stringify(title),
         });
-        div.innerHTML = "se guardo :)";
+        div.innerHTML = "Actualizado :)";
     } catch (e) {
         console.log(e);
 
@@ -177,9 +183,8 @@ async function deleteItem() {
         let r = await fetch(url, {
             'method': "DELETE" //se borra el header y el body, ya que se quiere borrar, no se sube ningun tipo de contenido.
         });
-        let json = r.json();
+        let json = await r.json();
         console.log(json);
-        console.log(title);
         div.innerHTML = "se borro :)";
     } catch (e) {
         console.log(e);
