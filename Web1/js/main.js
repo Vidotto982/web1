@@ -4,8 +4,9 @@
 //let onePoke = document.getElementById("onePoke").value;
 //let idPoke = document.getElementById("idPost").value;
 //let namePoke = document.getElementById("namePoke").value;
-let butPost = document.querySelector('#butTienda').addEventListener("click", post);
-let getPost = document.getElementById('getTienda').addEventListener("click", getItems());
+let butPost = document.querySelector('#butPost').addEventListener("click", post);
+let getPost = document.getElementById('getTienda').addEventListener("click", getItems);
+let putItems = document.getElementById('putItem').addEventListener("click", putItem);
 let deletePost = document.querySelector("#deleteItem").addEventListener("click", deleteItem);
 
 // function getTest() {
@@ -127,36 +128,28 @@ async function post() {
         div.innerHTML = "se guardo :)";
     } catch {
         console.log(e);
-        for (index in e) {
-            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
-        }
     }
 }
+
 async function getItems() {
-    let div = document.getElementsByClassName("Items");
-    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
+    let div = document.querySelector(".items");
+    let url = `https://web-unicen.herokuapp.com/api/groups/javier/claserest`;
     let r = await fetch(url);
     let json = r.json();
     try {
-        for (const elem of json.nombres) {
-            //  html += "<p>" + elem.thing.title + "</p>"; mala practica
-            let p = document.createElement("p"); //{
-            p.innerHTML = elem.thing.nombre; //          BUENA PRACTICA
-            div.appendChild(p); //}
+        for (const elem of json.claserest) {
+            let p = document.createElement("p");
+            p = elem.thing.cliente;
+            div.appendChild(p);
         }
-
     } catch (e) {
         console.log(e);
-
     }
 }
-
-
 async function putItem() {
     let div = document.querySelector(".seGuardo");
     div.innerHTML = "Guardando...*";
-    let url = `
-                https: //my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
+    let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
     let title = {
         "thing": {
             "title": "mira como está la vagancia",
@@ -170,15 +163,10 @@ async function putItem() {
             },
             'body': JSON.stringify(title),
         });
-        let json = r.json();
-        console.log(json);
-        console.log(title);
         div.innerHTML = "se guardo :)";
-    } catch {
+    } catch (e) {
         console.log(e);
-        for (index in e) {
-            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
-        }
+
     }
 }
 async function deleteItem() {
@@ -193,10 +181,7 @@ async function deleteItem() {
         console.log(json);
         console.log(title);
         div.innerHTML = "se borro :)";
-    } catch {
+    } catch (e) {
         console.log(e);
-        for (index in e) {
-            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
-        }
     }
 }

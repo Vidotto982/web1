@@ -1,0 +1,52 @@
+let butPost = document.querySelector('#butTienda').addEventListener("click", post);
+let getPost = document.getElementById('getTienda').addEventListener("click", getItems());
+let deletePost = document.querySelector("#deleteItem").addEventListener("click", deleteItem);
+
+async function post() {
+    let div = document.querySelector(".seGuardo");
+    div.innerHTML = "Guardando...*";
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
+    let title = {
+        "thing": {
+            //"userId": 1,
+            "nombre": "Riquelme",
+            //"body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+        }
+    };
+    try {
+        let r = await fetch(url, {
+            'method': "POST",
+            'headers': {
+                'Content-Type': 'aplication-json'
+            },
+            'body': JSON.stringify(title),
+        });
+        let json = r.json();
+        console.log(json);
+        console.log(title);
+        div.innerHTML = "se guardo :)";
+    } catch {
+        console.log(e);
+        for (index in e) {
+            console.log(index + ' (' + (typeof e[index]) + '): ' + e[index]);
+        }
+    }
+}
+async function getItems() {
+    let div = document.getElementsByClassName("Items");
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
+    let r = await fetch(url);
+    let json = r.json();
+    try {
+        for (const elem of json.nombres) {
+            //  html += "<p>" + elem.thing.title + "</p>"; mala practica
+            let p = document.createElement("p"); //{
+            p.innerHTML = elem.thing.nombre; //          BUENA PRACTICA
+            div.appendChild(p); //}
+        }
+
+    } catch (e) {
+        console.log(e);
+
+    }
+}
