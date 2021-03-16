@@ -139,13 +139,11 @@ async function getItems() {
     let json = await r.json();
     try {
         for (const elem of json.nombres) {
-            function createP() {
-                let p = document.createElement("p");
-                p = elem.thing.nombre;
-                div.appendChild(p);
-            }
-            createP();
+            let p = document.createElement("p");
+            p.innerHTML = elem.thing.Nombre;
+            div.appendChild(p);
         }
+
     } catch (e) {
         console.log(e);
         div.innerHTML = "F"
