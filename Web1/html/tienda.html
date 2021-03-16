@@ -31,44 +31,37 @@
         </nav>
     </div>
     <div class="container">
-        <table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"><button id="butPost">Subir Item</button></th>
+                    <th scope="col"><button id="putItem">Actualizar Item</button></th>
+                    <th scope="col"><button id="getTienda">Mostrar Items</button></th>
+                    <th scope="col"><button id="deleteItem">Borrar Item</button></th>
+                </tr>
+            </thead>
             <tbody>
                 <tr>
                     <td>
-                        <button id="butPost">Subir Item</button>
+                        <div class="seGuardo"></div>
                     </td>
                     <td>
-                        <button id="putItem">Actualizar Item</button>
+                        <div class="putItem"> </div>
                     </td>
+
                     <td>
-                        <button id="getTienda">Mostrar Items</button>
+                        <div class="items"> </div>
                     </td>
+
                     <td>
-                        <button id="deleteItem">Mostrar Items</button>
+                        <div class="deleteItems"> </div>
                     </td>
-                </tr>
 
-                <tr>
-                    <div class="seGuardo">
-                    </div>
-
-                </tr>
-                <tr>
-                    <div class="putItem">
-                    </div>
-                </tr>
-
-                <tr>
-                    <div class="items">
-                    </div>
-                </tr>
-                <tr>
-                    <div class="deleteItems">
-                    </div>
                 </tr>
             </tbody>
         </table>
     </div>
+
     <!-- cierra container -->
     <div class="terminos">
         <h1 class="ref">Created by Francisco Vidotto</h1>
