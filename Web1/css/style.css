@@ -72,10 +72,22 @@
     color: rgb(18, 105, 25);
 }
 
-#title1,
-#title2,
-#title3,
-#title4 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: skyblue;
+.container-flex {
+    display: flex;
+    /* flex-flow: row wrap; */
+    flex-wrap: wrap;
+    align-content: space-between;
+    background-color: chocolate;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.container-flex .test-flex {
+    background-color: bisque;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    border: 2px solid black;
 }

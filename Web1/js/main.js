@@ -9,71 +9,71 @@ let getPost = document.getElementById('getTienda').addEventListener("click", get
 let putItems = document.getElementById('putItem').addEventListener("click", putItem);
 let deletePost = document.querySelector("#deleteItem").addEventListener("click", deleteItem);
 
-// function getTest() {
-//     const getDataAsync = async(idPoke) => {
-//         try {
-//             if (idPoke >= 1 & idPoke < 899) {
-//                 const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke}`);
-//                 const poke = await resPoke.json();
-//                 console.log(poke);
-//                 // const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.allPokeId}`)
-//                 // const allPoke = await resAllPoke.json();
-//                 onePoke.innerHTML = poke.name;
-//             }
-//             if (idPoke < 1 || idPoke == '') {
-//                 idPoke = 1;
-//                 console.log("If 2")
-//                 const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke}`);
-//                 const poke = await resPoke.json();
-//                 for (let i = 0; i < poke.id; poke.id++) {
-//                     console.log("for" + " " + poke.name);
-//                     const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.id}`);
-//                     const allPoke = await resAllPoke.json();
+function getTest() {
+    const getDataAsync = async(idPoke) => {
+        try {
+            if (idPoke >= 1 & idPoke < 899) {
+                const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke}`);
+                const poke = await resPoke.json();
+                console.log(poke);
+                // const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.allPokeId}`)
+                // const allPoke = await resAllPoke.json();
+                onePoke.innerHTML = poke.name;
+            }
+            if (idPoke < 1 || idPoke == '') {
+                idPoke = 1;
+                console.log("If 2")
+                const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke}`);
+                const poke = await resPoke.json();
+                for (let i = 0; i < poke.id; poke.id++) {
+                    console.log("for" + " " + poke.name);
+                    const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.id}`);
+                    const allPoke = await resAllPoke.json();
 
-//                     function createP() {
-//                         let divAll = document.getElementById("allPoke");
-//                         let p = document.createElement("p");
-//                         p.innerHTML = allPoke.name;
-//                         divAll.appendChild(p)
-//                     }
-//                     createP();
-//                 }
+                    function createP() {
+                        let divAll = document.getElementById("allPoke");
+                        let p = document.createElement("p");
+                        p.innerHTML = allPoke.name;
+                        divAll.appendChild(p)
+                    }
+                    createP();
+                }
 
-//             }
-//             //  if para treaer a los pokemons si el usuario ponia 0 o dejaba vacio.
-//         } catch (error) {
-//             console.log("error" + " " + error);
-//         }
-//     }
-//     getDataAsync(idPoke);
-// }
+            }
+            //  if para treaer a los pokemons si el usuario ponia 0 o dejaba vacio.
+        } catch (error) {
+            console.log("error" + " " + error);
+        }
+    }
+    getDataAsync(idPoke);
+}
 
-// function getAllPoke() {
-//     const getDataAsync = async(idPoke) => {
-//         try {
-//             idPoke++;
-//             console.log("If 2")
-//             const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke}`);
-//             const poke = await resPoke.json();
-//             for (let i = 0; i < poke.id; poke.id++) {
-//                 console.log("for" + " " + poke.name);
-//                 const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.id}`);
-//                 const allPoke = await resAllPoke.json();
+function getAllPoke() {
+    const getDataAsync = async(idPoke) => {
+        try {
+            idPoke++;
+            console.log("If 2")
+            const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${idPoke}`);
+            const poke = await resPoke.json();
+            for (let i = 0; i < poke.id; poke.id++) {
+                console.log("for" + " " + poke.name);
+                const resAllPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.id}`);
+                const allPoke = await resAllPoke.json();
 
-//                 function createP() {
-//                     let divAll = document.getElementById("allPoke");
-//                     let p = document.createElement("p");
-//                     p.innerHTML = allPoke.name;
-//                     divAll.appendChild(p)
-//                 }
-//                 createP();
-//             }
-//         } catch (error) {
-//             console.log("error" + " " + error);
-//         }
-//     }
-//     getDataAsync(idPoke)
-// }
+                function createP() {
+                    let divAll = document.getElementById("allPoke");
+                    let p = document.createElement("p");
+                    p.innerHTML = allPoke.name;
+                    divAll.appendChild(p)
+                }
+                createP();
+            }
+        } catch (error) {
+            console.log("error" + " " + error);
+        }
+    }
+    getDataAsync(idPoke)
+}
 
 // function getPokeClass() {
 //     const getDataAsync = async(idPoke) => {
@@ -107,7 +107,7 @@ async function post() {
     let div = document.querySelector(".seGuardo");
     div.innerHTML = "Guardando...*";
     let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
-    let title = {
+    let thing = {
         "thing": {
             //"userId": 1,
             "nombre": "Riquelme",
@@ -120,11 +120,11 @@ async function post() {
             'headers': {
                 'Content-Type': 'aplication-json'
             },
-            'body': JSON.stringify(title),
+            'body': JSON.stringify(thing),
         });
-        let json = r.json();
-        console.log(json);
-        console.log(title);
+        let json = await r.json();
+        // console.log(json);
+        // console.log(title);
         div.innerHTML = "se guardo :)";
     } catch {
         console.log(e);
@@ -139,14 +139,16 @@ async function getItems() {
     let json = await r.json();
     try {
         for (const elem of json.nombres) {
-            let p = document.createElement("p");
-            p.innerHTML = elem.thing.Nombre;
-            div.appendChild(p);
+            if (elem.thing.nombre < 'h') {
+                let p = document.createElement("p");
+                p.innerHTML = elem.thing.Nombre;
+                div.appendChild(p);
+            }
         }
 
     } catch (e) {
         console.log(e);
-        div.innerHTML = "F"
+        div.innerHTML = "No trajo nada"
 
     }
 }
@@ -167,6 +169,7 @@ async function putItem() {
             },
             'body': JSON.stringify(title),
         });
+        let json = await r.json();
         div.innerHTML = "Actualizado :)";
     } catch (e) {
         console.log(e);
