@@ -1,3 +1,7 @@
+* {
+    margin: 0px;
+}
+
 .ref {
     text-align: center;
     font-size: 10px;
@@ -54,6 +58,7 @@
 }
 
 .ulbotonera {
+    margin: 0px;
     display: flow-root;
     list-style-type: none;
     background-color: rgb(252, 126, 126);
@@ -72,19 +77,24 @@
     color: rgb(18, 105, 25);
 }
 
-.container-form,
 .divNameForm,
 .divLastNameForm,
 .divGmailForm,
 .divPassForm {
-    margin: 4px;
     text-align: center;
 }
 
 .atributoForm {
+    font-family: sans-serif;
     display: inline-block;
     text-align: center;
     margin: 4px;
+    background-color: rgb(200, 219, 200);
+}
+
+.container-form {
+    margin: 0px;
+    background-color: rgba(144, 104, 236, 0.582);
 }
 
 .InputName,
