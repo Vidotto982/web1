@@ -34,16 +34,22 @@
     grid-area: e;
 }
 
+.linea2 {
+    display: grid;
+    grid-area: linea2;
+    grid-template-areas: "a a a";
+}
+
 .footer {
     grid-area: footer;
     text-align: center;
 }
 
-.content {
+.container-flex {
     display: grid;
     text-align: center;
-    grid-template-rows: 1fr 2fr 1fr 1fr 2fr 1fr;
-    grid-template-areas: "header header" "a a" "c d" "e e" "footer footer";
+    grid-template-rows: 1fr 4fr 1fr 1fr 2fr 1fr;
+    grid-template-areas: "header header" "linea2 linea2" "c d" "e e" "footer footer";
 }
 
 @media only screen and (min-width: 600px) {
