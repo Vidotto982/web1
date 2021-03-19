@@ -4,10 +4,10 @@
 //let onePoke = document.getElementById("onePoke").value;
 //let idPoke = document.getElementById("idPost").value;
 //let namePoke = document.getElementById("namePoke").value;
-// let butPost = document.querySelector('#butPost').addEventListener("click", post);
-// let getPost = document.getElementById('getTienda').addEventListener("click", getItems);
-// let putItems = document.getElementById('putItem').addEventListener("click", putItem);
-// let deletePost = document.querySelector("#deleteItem").addEventListener("click", deleteItem);
+let butPost = document.querySelector('#butPost').addEventListener("click", post);
+let getPost = document.getElementById('getTienda').addEventListener("click", getItems);
+let putItems = document.getElementById('putItem').addEventListener("click", putItem);
+let deletePost = document.querySelector("#deleteItem").addEventListener("click", deleteItem);
 
 // function getTest() {
 //     const getDataAsync = async(idPoke) => {
@@ -103,94 +103,94 @@
 // //     }
 // //     getDataAsync(idPoke)
 // // }
-// async function post() {
-//     let div = document.querySelector(".seGuardo");
-//     div.innerHTML = "Guardando...*";
-//     let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
-//     let thing = {
-//         "thing": {
-//             //"userId": 1,
-//             "nombre": "Riquelme",
-//             //"body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
-//         }
-//     };
-//     try {
-//         let r = await fetch(url, {
-//             'method': "POST",
-//             'headers': {
-//                 'Content-Type': 'aplication-json'
-//             },
-//             'body': JSON.stringify(thing),
-//         });
-//         let json = await r.json();
-//         // console.log(json);
-//         // console.log(title);
-//         div.innerHTML = "se guardo :)";
-//     } catch {
-//         console.log(e);
-//     }
-// }
+async function post() {
+    let div = document.querySelector(".seGuardo");
+    div.innerHTML = "Guardando...*";
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
+    let thing = {
+        "thing": {
+            //"userId": 1,
+            "nombre": "Riquelme",
+            //"body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
+        }
+    };
+    try {
+        let r = await fetch(url, {
+            'method': "POST",
+            'headers': {
+                'Content-Type': 'aplication-json'
+            },
+            'body': JSON.stringify(thing),
+        });
+        let json = await r.json();
+        // console.log(json);
+        // console.log(title);
+        div.innerHTML = "se guardo :)";
+    } catch {
+        console.log(e);
+    }
+}
 
-// async function getItems() {
-//     let div = document.querySelector(".items");
-//     div.innerHTML = "Cargando elementos..."
-//     let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
-//     let r = await fetch(url);
-//     let json = await r.json();
-//     try {
-//         for (const elem of json.nombres) {
-//             if (elem.thing.nombre < 'h') {
-//                 let p = document.createElement("p");
-//                 p.innerHTML = elem.thing.Nombre;
-//                 div.appendChild(p);
-//             }
-//         }
+async function getItems() {
+    let div = document.querySelector(".items");
+    div.innerHTML = "Cargando elementos..."
+    let url = `https://web-unicen.herokuapp.com/api/groups/ejemplos/nombres`;
+    let r = await fetch(url);
+    let json = await r.json();
+    try {
+        for (const elem of json.nombres) {
+            if (elem.thing.nombre < 'h') {
+                let p = document.createElement("p");
+                p.innerHTML = elem.thing.Nombre;
+                div.appendChild(p);
+            }
+        }
 
-//     } catch (e) {
-//         console.log(e);
-//         div.innerHTML = "No trajo nada"
+    } catch (e) {
+        console.log(e);
+        div.innerHTML = "No trajo nada"
 
-//     }
-// }
-// async function putItem() {
-//     let div = document.querySelector(".putItem");
-//     div.innerHTML = "Actualizando...*";
-//     let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
-//     let title = {
-//         "thing": {
-//             "title": "mira como está la vagancia",
-//         },
-//     };
-//     try {
-//         let r = await fetch(url, {
-//             'method': "PUT",
-//             'headers': {
-//                 'Content-Type': 'aplication-json'
-//             },
-//             'body': JSON.stringify(title),
-//         });
-//         let json = await r.json();
-//         div.innerHTML = "Actualizado :)";
-//     } catch (e) {
-//         console.log(e);
+    }
+}
+async function putItem() {
+    let div = document.querySelector(".putItem");
+    div.innerHTML = "Actualizando...*";
+    let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`; //SE pone el id, desde algun valor tomado o harcodeado
+    let title = {
+        "thing": {
+            "title": "mira como está la vagancia",
+        },
+    };
+    try {
+        let r = await fetch(url, {
+            'method': "PUT",
+            'headers': {
+                'Content-Type': 'aplication-json'
+            },
+            'body': JSON.stringify(title),
+        });
+        let json = await r.json();
+        div.innerHTML = "Actualizado :)";
+    } catch (e) {
+        console.log(e);
 
-//     }
-// }
-// async function deleteItem() {
-//     let div = document.querySelector(".deleteItems");
-//     div.innerHTML = "Borrrando...*";
-//     let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`;
-//     try {
-//         let r = await fetch(url, {
-//             'method': "DELETE" //se borra el header y el body, ya que se quiere borrar, no se sube ningun tipo de contenido.
-//         });
-//         let json = await r.json();
-//         console.log(json);
-//         div.innerHTML = "se borro :)";
-//     } catch (e) {
-//         console.log(e);
-//     }
-// }
+    }
+}
+async function deleteItem() {
+    let div = document.querySelector(".deleteItems");
+    div.innerHTML = "Borrrando...*";
+    let url = `https://my-json-server.typicode.com/typicode/demo/posts/1`;
+    try {
+        let r = await fetch(url, {
+            'method': "DELETE" //se borra el header y el body, ya que se quiere borrar, no se sube ningun tipo de contenido.
+        });
+        let json = await r.json();
+        console.log(json);
+        div.innerHTML = "se borro :)";
+    } catch (e) {
+        console.log(e);
+    }
+}
 let butForm = document.getElementById('butForm').addEventListener("click", postForm);
 async function postForm() {
     let div = document.querySelector(".container-form");

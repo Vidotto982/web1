@@ -93,6 +93,7 @@
 }
 
 .container-form {
+    text-align: center;
     margin: 0px;
     background-color: rgba(144, 104, 236, 0.582);
 }
