@@ -37,7 +37,7 @@
 .linea2 {
     display: grid;
     grid-area: linea2;
-    grid-template-areas: "a a a";
+    grid-template-areas: "a a a a";
 }
 
 .footer {
@@ -49,7 +49,7 @@
     display: grid;
     text-align: center;
     grid-template-rows: 1fr 4fr 1fr 1fr 2fr 1fr;
-    grid-template-areas: "header header" "linea2 linea2" "c d" "e e" "footer footer";
+    grid-template-areas: "header header header" "linea2 linea2 linea2 " "c d e" " footer footer footer";
 }
 
 @media only screen and (min-width: 600px) {
