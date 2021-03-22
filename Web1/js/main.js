@@ -139,13 +139,14 @@ async function getItems() {
     let json = await r.json();
     try {
         for (const elem of json.nombres) {
-            if (elem.thing.nombre < 'h') {
-                let p = document.createElement("p");
-                p.innerHTML = elem.thing.Nombre;
-                div.appendChild(p);
-            }
-        }
+            //  if (elem.thing.nombre < 'h') {
+            let p = document.createElement("p");
+            p.innerHTML = elem.thing.nombre;
+            div.appendChild(p);
+            console.log(elem) //muestra cada uno de los elementos por consola
 
+            // }
+        }
     } catch (e) {
         console.log(e);
         div.innerHTML = "No trajo nada"
@@ -191,7 +192,7 @@ async function deleteItem() {
         console.log(e);
     }
 }
-let butForm = document.getElementById('butForm').addEventListener("click", postForm);
+//let butForm = document.getElementById('butForm').addEventListener("click", postForm);
 async function postForm() {
     let div = document.querySelector(".container-form");
     let inpNombre = document.querySelector(".inputName").value;
